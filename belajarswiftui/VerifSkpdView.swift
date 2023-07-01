@@ -1,27 +1,22 @@
-//
-//  ContentView.swift
-//  belajarswiftui
-//
-//  Created by Fauzan Ghozi Mubarak on 30/06/23.
-//
-
 import SwiftUI
 import SlidingTabView
+
 struct ContentView: View {
     var body: some View {
-        VStack{
-            Color(hex: 0x264653).edgesIgnoringSafeArea(.top)
-                .frame(height: 0)
+        NavigationView {
             VStack{
-                RectangtleTop()
-                tabIndexSKPD()
-                Spacer()
-                
+                Color(hex: 0x264653)
+                    .edgesIgnoringSafeArea(.top)
+                    .frame(height: 0)
+                VStack{
+                    RectangtleTop()
+                    tabIndexSKPD()
+                    Spacer()
+                }
+                .padding(EdgeInsets(top: -20, leading: 0, bottom: 0, trailing: 0))
             }
-            .padding(EdgeInsets(top: -20, leading: 0, bottom: 0, trailing: 0))
+            .navigationBarHidden(true)
         }
-  
-      
     }
 }
 
@@ -40,7 +35,6 @@ struct RectangtleTop: View {
                 .foregroundColor(Color(hex: 0x264653))
                 .clipShape(CustomShape())
             HStack(spacing: 8){
-            
                 Image(systemName: "arrow.left")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
@@ -53,23 +47,18 @@ struct RectangtleTop: View {
                     .font(.headline)
                     .padding(EdgeInsets(top: 26, leading: 16, bottom: 20, trailing: 0))
                 Spacer()
-                
             }
-          
-
-               
         }
         .zIndex(1) // Mengatur zIndex menjadi 1 agar Rectangletop berada di atas parent view
-        
     }
 }
-      
-struct tabIndexSKPD : View{
+
+struct tabIndexSKPD : View {
     @State private var tabIndex = 0
-    var body: some View{
-        VStack{
+    var body: some View {
+        VStack {
             SlidingTabView(selection: $tabIndex, tabs: ["SKPD","E-SPTPD"], animation: .easeInOut)
-            if(tabIndex == 0){
+            if(tabIndex == 0) {
                 ViewSkpd()
             } else if tabIndex == 1 {
                 ViewSptpd()
@@ -83,51 +72,55 @@ struct ViewSkpd : View {
         VStack{
             SearchView()
             ScrollView {
-                    VStack(spacing: 16) {
-                        ForEach(0..<10) { index in
+                VStack(spacing: 16) {
+                    ForEach(0..<10) { index in
+                        NavigationLink(destination: DetailView(index: index)) {
                             ContentBodyView()
                         }
                     }
-                    .padding()
                 }
+                .padding()
+            }
         }
         .frame(height: .infinity)
         .padding(EdgeInsets(top: 0, leading: 0, bottom: 40, trailing: 0))
     }
 }
+
 struct ViewSptpd : View {
     var body: some View {
         VStack{
             SearchView()
             ScrollView {
-                    VStack(spacing: 16) {
-                        ForEach(0..<10) { index in
+                VStack(spacing: 16) {
+                    ForEach(0..<10) { index in
+                        NavigationLink(destination: DetailView(index: index)) {
                             ContentBodyView()
                         }
                     }
-                    .padding()
                 }
+                .padding()
+            }
         }
         .frame(height: .infinity)
         .padding(EdgeInsets(top: 0, leading: 0, bottom: 40, trailing: 0))
     }
 }
 
-
 struct SearchView: View {
     @State private var searchText = ""
-
+    
     var body: some View {
         VStack {
             TextField("NPWPD / No SKPD", text: $searchText)
                 .padding(.vertical, 18)
                 .padding(.horizontal, 40)
                 .background(Color.white)
-                              .cornerRadius(10)
-                              .overlay(
-                                  RoundedRectangle(cornerRadius: 10)
-                                      .stroke(Color.gray, lineWidth: 1)
-                              )
+                .cornerRadius(10)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(Color.gray, lineWidth: 1)
+                )
                 .overlay(
                     HStack {
                         Image(systemName: "magnifyingglass")
@@ -138,12 +131,11 @@ struct SearchView: View {
                 )
                 .padding(.horizontal, 16)
                 .padding(.vertical, 16)
-
+            
             // Konten lainnya di bawah SearchField
         }
     }
 }
-
 
 struct ContentBodyView: View {
     var body: some View {
@@ -157,7 +149,6 @@ struct ContentBodyView: View {
                 .overlay(
                     HStack{
                         VStack(alignment: .leading, spacing: 8) {
-                            
                             Text("No SKPD: A-12345678")
                                 .font(.system(size: 12))
                             Text("NPWPD: 1234.12.123")
@@ -168,24 +159,27 @@ struct ContentBodyView: View {
                                 .font(.system(size: 12))
                             Text("Jumlah Pajak: Rp. 600.000")
                                 .font(.system(size: 12))
-
-                            }
-                            .foregroundColor(.black)
-                            .padding(.horizontal, 16)
-                            .padding(.vertical, 16)
-                            
+                        }
+                        .foregroundColor(.black)
+                        .padding(.horizontal, 16)
+                        .padding(.vertical, 16)
+                        
                         Spacer()
                     }
-             
-                      
                 )
                 .shadow(color: Color.black.opacity(0.2), radius: 4, x: 0, y: 2)
-    
         }
     }
 }
 
-
+struct DetailView: View {
+    var index: Int
+    
+    var body: some View {
+        Text("Detail Page for index \(index)")
+            .navigationBarTitle("Detail Page")
+    }
+}
 
 extension Color {
     init(hex: UInt32) {
@@ -199,10 +193,10 @@ extension Color {
 
 struct CustomShape: Shape {
     let radius: CGFloat = 20
-
+    
     func path(in rect: CGRect) -> Path {
         var path = Path()
-
+        
         path.move(to: CGPoint(x: rect.minX, y: rect.minY))
         path.addLine(to: CGPoint(x: rect.maxX, y: rect.minY))
         path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY - radius))
@@ -210,7 +204,7 @@ struct CustomShape: Shape {
         path.addLine(to: CGPoint(x: rect.minX + radius, y: rect.maxY))
         path.addArc(center: CGPoint(x: rect.minX + radius, y: rect.maxY - radius), radius: radius, startAngle: .degrees(90), endAngle: .degrees(180), clockwise: false)
         path.closeSubpath()
-
+        
         return path
     }
 }
