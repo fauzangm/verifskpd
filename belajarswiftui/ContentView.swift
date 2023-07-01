@@ -6,26 +6,12 @@
 //
 
 import SwiftUI
-
+import SlidingTabView
 struct ContentView: View {
     var body: some View {
         VStack{
             RectangtleTop()
-            SearchView()
-            TabView {
-                      Text("SKPD View")
-                
-                          .tabItem {
-                              Label("SKPD", systemImage: "briefcase")
-                          }
-                      
-                      Text("Esptpd View")
-                          .tabItem {
-                              Label("Esptpd", systemImage: "dollarsign.square")
-                          }
-                  }
-                  .tabViewStyle(PageTabViewStyle(indexDisplayMode: .automatic))
-                  .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
+            tabIndexSKPD()
                   
             Spacer()
             
@@ -37,6 +23,20 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+    }
+}
+
+struct tabIndexSKPD : View{
+    @State private var tabIndex = 0
+    var body: some View{
+        VStack{
+            SlidingTabView(selection: $tabIndex, tabs: ["SKPD","E-SPTPD"], animation: .easeInOut)
+            if(tabIndex == 0){
+                ViewSkpd()
+            } else if tabIndex == 1 {
+                ViewSptpd()
+            }
+        }
     }
 }
 
@@ -77,7 +77,8 @@ struct RectangtleTop: View {
 struct ViewSkpd : View {
     var body: some View {
         VStack{
-            Text("hai SKPD")
+            SearchView()
+            Text("Haii SKPD")
         }
     }
 }
@@ -85,7 +86,8 @@ struct ViewSkpd : View {
 struct ViewSptpd : View {
     var body: some View {
         VStack{
-            Text("Hai Sptpd")
+            SearchView()
+            Text("Haii E-SPTPD")
         }
     }
 }

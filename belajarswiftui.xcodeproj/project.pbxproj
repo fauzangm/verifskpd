@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2252B4A52A4FCBED00EC0F65 /* SlidingTabView in Frameworks */ = {isa = PBXBuildFile; productRef = 2252B4A42A4FCBED00EC0F65 /* SlidingTabView */; };
 		2276EABC2A4ED186001D267E /* belajarswiftuiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2276EABB2A4ED186001D267E /* belajarswiftuiApp.swift */; };
 		2276EABE2A4ED186001D267E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2276EABD2A4ED186001D267E /* ContentView.swift */; };
 		2276EAC02A4ED186001D267E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2276EABF2A4ED186001D267E /* Assets.xcassets */; };
@@ -51,6 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2252B4A52A4FCBED00EC0F65 /* SlidingTabView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -143,6 +145,9 @@
 			dependencies = (
 			);
 			name = belajarswiftui;
+			packageProductDependencies = (
+				2252B4A42A4FCBED00EC0F65 /* SlidingTabView */,
+			);
 			productName = belajarswiftui;
 			productReference = 2276EAB82A4ED186001D267E /* belajarswiftui.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +220,9 @@
 				Base,
 			);
 			mainGroup = 2276EAAF2A4ED185001D267E;
+			packageReferences = (
+				2252B4A32A4FCBED00EC0F65 /* XCRemoteSwiftPackageReference "SlidingTabView" */,
+			);
 			productRefGroup = 2276EAB92A4ED186001D267E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -577,6 +585,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2252B4A32A4FCBED00EC0F65 /* XCRemoteSwiftPackageReference "SlidingTabView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/QuynhNguyen/SlidingTabView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2252B4A42A4FCBED00EC0F65 /* SlidingTabView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2252B4A32A4FCBED00EC0F65 /* XCRemoteSwiftPackageReference "SlidingTabView" */;
+			productName = SlidingTabView;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 2276EAB02A4ED185001D267E /* Project object */;
 }
