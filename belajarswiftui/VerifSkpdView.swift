@@ -2,6 +2,7 @@ import SwiftUI
 import SlidingTabView
 
 struct ContentView: View {
+    @Environment(\.presentationMode) var presentationMode
     var body: some View {
         NavigationView {
             VStack{
@@ -9,7 +10,7 @@ struct ContentView: View {
                     .edgesIgnoringSafeArea(.top)
                     .frame(height: 0)
                 VStack{
-                    RectangtleTop()
+                    RectangtleTop(tittle: "Verifikasi SKPD",presentationMode: presentationMode)
                     tabIndexSKPD()
                     Spacer()
                 }
@@ -23,33 +24,6 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
-    }
-}
-
-struct RectangtleTop: View {
-    var body: some View {
-        ZStack {
-            Rectangle()
-                .frame(width: .infinity, height: 70)
-                .background(Color(hex: 0x264653))
-                .foregroundColor(Color(hex: 0x264653))
-                .clipShape(CustomShape())
-            HStack(spacing: 8){
-                Image(systemName: "arrow.left")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .foregroundColor(.white)
-                    .frame(width: 20, height: 20)
-                    .padding(EdgeInsets(top: 26, leading: 16, bottom: 20, trailing: 0))
-                
-                Text("Verifikasi SKPD")
-                    .foregroundColor(Color.white)
-                    .font(.headline)
-                    .padding(EdgeInsets(top: 26, leading: 16, bottom: 20, trailing: 0))
-                Spacer()
-            }
-        }
-        .zIndex(1) // Mengatur zIndex menjadi 1 agar Rectangletop berada di atas parent view
     }
 }
 
@@ -74,7 +48,7 @@ struct ViewSkpd : View {
             ScrollView {
                 VStack(spacing: 16) {
                     ForEach(0..<10) { index in
-                        NavigationLink(destination: DetailView(index: index)) {
+                        NavigationLink(destination: DetailSkpdView(index: index)) {
                             ContentBodyView()
                         }
                     }
@@ -94,7 +68,7 @@ struct ViewSptpd : View {
             ScrollView {
                 VStack(spacing: 16) {
                     ForEach(0..<10) { index in
-                        NavigationLink(destination: DetailView(index: index)) {
+                        NavigationLink(destination: DetailSkpdView(index: index)) {
                             ContentBodyView()
                         }
                     }
@@ -165,21 +139,18 @@ struct ContentBodyView: View {
                         .padding(.vertical, 16)
                         
                         Spacer()
+                        
+                        Image("imghotel")
+                            .frame(width: 60,height: 60)
+                            .padding(EdgeInsets(top: 0, leading: 0, bottom:0, trailing: 16))
                     }
+                    
                 )
                 .shadow(color: Color.black.opacity(0.2), radius: 4, x: 0, y: 2)
         }
     }
 }
 
-struct DetailView: View {
-    var index: Int
-    
-    var body: some View {
-        Text("Detail Page for index \(index)")
-            .navigationBarTitle("Detail Page")
-    }
-}
 
 extension Color {
     init(hex: UInt32) {
@@ -188,23 +159,5 @@ extension Color {
         let blue = Double(hex & 0x0000FF) / 255.0
         
         self.init(red: red, green: green, blue: blue)
-    }
-}
-
-struct CustomShape: Shape {
-    let radius: CGFloat = 20
-    
-    func path(in rect: CGRect) -> Path {
-        var path = Path()
-        
-        path.move(to: CGPoint(x: rect.minX, y: rect.minY))
-        path.addLine(to: CGPoint(x: rect.maxX, y: rect.minY))
-        path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY - radius))
-        path.addArc(center: CGPoint(x: rect.maxX - radius, y: rect.maxY - radius), radius: radius, startAngle: .degrees(0), endAngle: .degrees(90), clockwise: false)
-        path.addLine(to: CGPoint(x: rect.minX + radius, y: rect.maxY))
-        path.addArc(center: CGPoint(x: rect.minX + radius, y: rect.maxY - radius), radius: radius, startAngle: .degrees(90), endAngle: .degrees(180), clockwise: false)
-        path.closeSubpath()
-        
-        return path
     }
 }

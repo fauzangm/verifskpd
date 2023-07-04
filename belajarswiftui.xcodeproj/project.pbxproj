@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2223D8B12A540D8D0031070F /* DetailSkpdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2223D8B02A540D8D0031070F /* DetailSkpdView.swift */; };
+		2223D8B32A5410B20031070F /* AssetUi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2223D8B22A5410B20031070F /* AssetUi.swift */; };
 		2252B4A52A4FCBED00EC0F65 /* SlidingTabView in Frameworks */ = {isa = PBXBuildFile; productRef = 2252B4A42A4FCBED00EC0F65 /* SlidingTabView */; };
 		2276EABC2A4ED186001D267E /* belajarswiftuiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2276EABB2A4ED186001D267E /* belajarswiftuiApp.swift */; };
 		2276EABE2A4ED186001D267E /* VerifSkpdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2276EABD2A4ED186001D267E /* VerifSkpdView.swift */; };
@@ -35,6 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2223D8B02A540D8D0031070F /* DetailSkpdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailSkpdView.swift; sourceTree = "<group>"; };
+		2223D8B22A5410B20031070F /* AssetUi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetUi.swift; sourceTree = "<group>"; };
 		2276EAB82A4ED186001D267E /* belajarswiftui.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = belajarswiftui.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2276EABB2A4ED186001D267E /* belajarswiftuiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = belajarswiftuiApp.swift; sourceTree = "<group>"; };
 		2276EABD2A4ED186001D267E /* VerifSkpdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifSkpdView.swift; sourceTree = "<group>"; };
@@ -100,6 +104,8 @@
 				2276EABD2A4ED186001D267E /* VerifSkpdView.swift */,
 				2276EABF2A4ED186001D267E /* Assets.xcassets */,
 				2276EAC12A4ED186001D267E /* Preview Content */,
+				2223D8B02A540D8D0031070F /* DetailSkpdView.swift */,
+				2223D8B22A5410B20031070F /* AssetUi.swift */,
 			);
 			path = belajarswiftui;
 			sourceTree = "<group>";
@@ -267,6 +273,8 @@
 			files = (
 				2276EABE2A4ED186001D267E /* VerifSkpdView.swift in Sources */,
 				2276EABC2A4ED186001D267E /* belajarswiftuiApp.swift in Sources */,
+				2223D8B32A5410B20031070F /* AssetUi.swift in Sources */,
+				2223D8B12A540D8D0031070F /* DetailSkpdView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
