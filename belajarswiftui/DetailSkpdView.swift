@@ -29,8 +29,23 @@ struct DetailSkpdView: View {
                             CardDataSkpd()
                                 .padding(EdgeInsets(top: 16, leading: 32, bottom: 0, trailing: 32))
                             
-                            CardDetailPajakHiburan()
-                                .padding(EdgeInsets(top: 16, leading: 32, bottom: 0, trailing: 32))
+                            if(index == 0){
+                                CardDetailObjekPajakReklame()
+                                    .padding(EdgeInsets(top: 16, leading: 32, bottom: 0, trailing: 32))
+                            }else if(index == 1){
+                                CardDetailPajakHoteldanParkir()
+                                    .padding(EdgeInsets(top: 16, leading: 32, bottom: 0, trailing: 32))
+                            }else if(index == 2){
+                                CardDetailObjekPajakAirTanah()
+                                    .padding(EdgeInsets(top: 16, leading: 32, bottom: 0, trailing: 32))
+                            }else if(index == 3){
+                                CardDetailObjekPajakResto()
+                                    .padding(EdgeInsets(top: 16, leading: 32, bottom: 0, trailing: 32))
+                            }else {
+                                CardDetailPajakHiburan()
+                                    .padding(EdgeInsets(top: 16, leading: 32, bottom: 0, trailing: 32))
+                            }
+                     
                             
                             CardEstimasiPerhitunganPajak()
                                 .padding(EdgeInsets(top: 16, leading: 32, bottom: 0, trailing: 32))
@@ -658,6 +673,53 @@ struct CardDetailPajakHiburan: View {
             }
             
 
+            Group{
+                Text("Berapa jumlah yang beredar")
+                    .font(.system(size: 12))
+                    .padding(.horizontal, 16)
+                    .padding(.top,8)
+                    .foregroundColor(Color.black)
+                
+                TextField("Label", text: $text)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding(.horizontal, 16)
+                    .disabled(true)
+                    .font(.system(size: 12))
+            }
+            
+            Group{
+                Text("Penjualan Karcis dengan mesin tiket")
+                    .font(.system(size: 12))
+                    .padding(.horizontal, 16)
+                    .padding(.top,8)
+                    .foregroundColor(Color.black)
+                HStack(alignment: .center){
+                    RadioButton(text: "Ya", isSelected: selectedOption == true) {
+                        selectedOption = true
+                    }
+                    RadioButton(text: "Tidak", isSelected: selectedOption == true) {
+                        selectedOption = false
+                    }
+                }
+                .padding(.horizontal,16)
+            }
+            
+            Group{
+                Text("Melaksanakan Pembukuan/Pencatatan")
+                    .font(.system(size: 12))
+                    .padding(.horizontal, 16)
+                    .padding(.top,8)
+                    .foregroundColor(Color.black)
+                HStack(alignment: .center){
+                    RadioButton(text: "Ya", isSelected: selectedOption == true) {
+                        selectedOption = true
+                    }
+                    RadioButton(text: "Tidak", isSelected: selectedOption == true) {
+                        selectedOption = false
+                    }
+                }
+                .padding(.horizontal,16)
+            }
         
             
             
@@ -721,5 +783,196 @@ struct RadioButton: View {
 
 
 // TAMPILAN PAJAK REKLAME
+struct CardDetailObjekPajakReklame: View {
+    @State private var text: String = ""
+    
+    var body: some View {
+        VStack(alignment: .leading) {
+            
+            Text("Detail Objek Pajak Reklame")
+                .bold()
+                .foregroundColor(Color.black)
+                .font(.system(size: 12))
+                .padding(EdgeInsets(top: 16, leading: 16, bottom: 0, trailing: 0))
+            
+            Group {
+    
+                Text("Judul Reklame")
+                    .font(.system(size: 12))
+                    .padding(.horizontal, 16)
+                    .padding(.top, 16)
+                    .foregroundColor(Color.black)
+                
+                TextField("Label", text: $text)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .disabled(true)
+                    .padding(.horizontal, 16)
+                    .font(.system(size: 12))
+                
+                Text("Nama Produk Reklame")
+                    .font(.system(size: 12))
+                    .padding(.horizontal, 16)
+                    .foregroundColor(Color.black)
+                
+                TextField("Label", text: $text)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding(.horizontal, 16)
+                    .disabled(true)
+                    .font(.system(size: 12))
+                
+                Text("Nama Penyewa")
+                    .font(.system(size: 12))
+                    .padding(.horizontal, 16)
+                    .foregroundColor(Color.black)
+                
+                TextField("Label", text: $text)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding(.horizontal, 16)
+                    .disabled(true)
+                    .font(.system(size: 12))
+                
+                Text("Alamat Penyewa")
+                    .font(.system(size: 12))
+                    .padding(.horizontal, 16)
+                    .foregroundColor(Color.black)
+                
+                TextField("Label", text: $text)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding(.horizontal, 16)
+                    .disabled(true)
+                    .font(.system(size: 12))
+                
+                Text("Masa Pajak")
+                    .font(.system(size: 12))
+                    .padding(.horizontal, 16)
+                    .foregroundColor(Color.black)
+                
+                TextField("Label", text: $text)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding(.horizontal, 16)
+                    .disabled(true)
+                    .font(.system(size: 12))
+                
+            
+            }
+            
+            Group {
+    
+                Text("Jumlah Tahun")
+                    .font(.system(size: 12))
+                    .padding(.horizontal, 16)
+                    .padding(.top, 16)
+                    .foregroundColor(Color.black)
+                
+                TextField("Label", text: $text)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .disabled(true)
+                    .padding(.horizontal, 16)
+                    .font(.system(size: 12))
+                
+                Text("Jumlah Bulan")
+                    .font(.system(size: 12))
+                    .padding(.horizontal, 16)
+                    .foregroundColor(Color.black)
+                
+                TextField("Label", text: $text)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding(.horizontal, 16)
+                    .disabled(true)
+                    .font(.system(size: 12))
+                
+                Text("Jumlah Minggu")
+                    .font(.system(size: 12))
+                    .padding(.horizontal, 16)
+                    .foregroundColor(Color.black)
+                
+                TextField("Label", text: $text)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding(.horizontal, 16)
+                    .disabled(true)
+                    .font(.system(size: 12))
+                
+                Text("Jumlah Hari")
+                    .font(.system(size: 12))
+                    .padding(.horizontal, 16)
+                    .foregroundColor(Color.black)
+                
+                TextField("Label", text: $text)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding(.horizontal, 16)
+                    .disabled(true)
+                    .font(.system(size: 12))
+                
+                Text("Dimensi Reklame")
+                    .font(.system(size: 12))
+                    .padding(.horizontal, 16)
+                    .foregroundColor(Color.black)
+                
+                TextField("Label", text: $text)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding(.horizontal, 16)
+                    .disabled(true)
+                    .font(.system(size: 12))
+                
+            
+            }
+            
+            ForEach(0..<3) { index in
+                contentDetailPajakReklame()
+                    .padding(.horizontal,16)
+            }
+            .padding(.vertical,16)
+            Spacer()
+                .padding(.bottom,16)
+            
+        }
+        .foregroundColor(Color.white)
+        .cornerRadius(10)
+        .background(Color.white)
+        .cornerRadius(10)
+        .shadow(color: Color.black.opacity(0.2), radius: 4, x: 0, y: 2)
+    }
+
+    
+}
+
+struct contentDetailPajakReklame: View {
+    var body: some View {
+        
+        VStack(alignment: .leading, spacing: 8) {
+            Text("Reklame Bilboard")
+                .bold()
+                .foregroundColor(Color.black)
+                .font(.system(size: 12))
+                .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 0))
+                .alignmentGuide(.leading) { d in d[HorizontalAlignment.leading] }// Mengatur alignment menjadi leading (kiri)
+            
+            Group {
+                Text("5 Kamar")
+                    .font(.system(size: 12))
+                    .foregroundColor(Color.black)
+                    .frame(maxWidth: .infinity, alignment: .leading) // Mengatur alignment menjadi leading (kiri)
+                
+                Text("Rp.2.000.000")
+                    .font(.system(size: 12))
+                    .foregroundColor(Color.black)
+                    .frame(maxWidth: .infinity, alignment: .leading) // Mengatur alignment menjadi leading (kiri)
+                
+                Text("3 Kamar yang laku")
+                    .font(.system(size: 12))
+                    .foregroundColor(Color.black)
+                    .frame(maxWidth: .infinity, alignment: .leading) // Mengatur alignment menjadi leading (kiri)
+            }
+            .padding(.horizontal,16)
+        }
+        .foregroundColor(Color.white)
+        .cornerRadius(10)
+        .frame(maxWidth: .infinity)
+        .padding(.vertical,16)
+        .background(Color.white)
+        .cornerRadius(10)
+        .shadow(color: Color.black.opacity(0.2), radius: 4, x: 0, y: 2)
+    }
+}
 
 
