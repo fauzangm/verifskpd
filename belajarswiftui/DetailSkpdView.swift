@@ -29,6 +29,9 @@ struct DetailSkpdView: View {
                             CardDataSkpd()
                                 .padding(EdgeInsets(top: 16, leading: 32, bottom: 0, trailing: 32))
                             
+                            CardDetailPajakHiburan()
+                                .padding(EdgeInsets(top: 16, leading: 32, bottom: 0, trailing: 32))
+                            
                             CardEstimasiPerhitunganPajak()
                                 .padding(EdgeInsets(top: 16, leading: 32, bottom: 0, trailing: 32))
                             
@@ -90,6 +93,8 @@ struct DetailSkpdView_Previews: PreviewProvider {
     }
 }
 
+
+//TAMPILAN DATA SKPD
 struct CardDataSkpd: View {
     var body: some View{
         VStack {
@@ -159,6 +164,8 @@ struct CardDataSkpd: View {
     }
 }
 
+
+//TAMPILAN ESTIMASI PERHITUNGAN PAJAK
 struct CardEstimasiPerhitunganPajak: View {
     var body: some View {
         VStack {
@@ -233,6 +240,7 @@ struct CardEstimasiPerhitunganPajak: View {
     }
 }
 
+//TAMPILAN RIWAYAT SKPD
 struct CardRiwayatSkpd: View {
     var body: some View {
         VStack(alignment: .leading){
@@ -299,4 +307,419 @@ struct contentRiwayatSkpd: View {
         }
     }
 }
+
+
+// TAMPILAN PAJAK HOTEL DAN PARKIR
+struct CardDetailPajakHoteldanParkir: View {
+    var body: some View {
+        VStack(alignment: .leading){
+            Text("Detail Objek Pajak Hotel")
+                .bold()
+                .foregroundColor(Color.black)
+                .font(.system(size: 12))
+                .padding(EdgeInsets(top: 16, leading: 26, bottom: 0, trailing: 0))
+            
+            ForEach(0..<3) { index in
+                contentDetailPajakHoteldanParkir()
+            }
+            .padding(.vertical,16)
+            
+        }
+            .foregroundColor(Color.white)
+            .cornerRadius(10)
+            .background(Color.white)
+            .cornerRadius(10)
+            .shadow(color: Color.black.opacity(0.2), radius: 4, x: 0, y: 2)
+    }
+}
+
+struct contentDetailPajakHoteldanParkir: View {
+    var body: some View {
+        VStack {
+            Rectangle()
+                .foregroundColor(Color.white)
+                .cornerRadius(10)
+                .frame(height: 100)
+                .background(Color.white)
+                .cornerRadius(10)
+                .shadow(color: Color.black.opacity(0.2), radius: 4, x: 0, y: 2)
+                .padding(.horizontal, 20)
+                .overlay(
+                    
+                        HStack{
+                            VStack(alignment: .leading, spacing: 8) {
+                                Text("5 Kamar")
+                                    .font(.system(size: 12))
+                                Text("Rp.2.000.000")
+                                    .font(.system(size: 12))
+                                Text("3 Kamar yang laku")
+                                    .font(.system(size: 12))
+                            }
+                            .foregroundColor(.black)
+                            .padding(.leading, 32)
+                            .padding(.vertical, 16)
+                            Spacer()
+                 
+                                Text("Deluxe")
+                                    .bold()
+                                    .font(.system(size: 14))
+                                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 16, trailing: 0))
+                            .foregroundColor(.black)
+                            .padding(.trailing,50)
+                            .padding(.top, 18)
+                        }
+                        
+                    
+                    
+                    
+                )
+        }
+    }
+}
+
+
+// TAMPILAN PAJAK RESTO
+struct CardDetailObjekPajakResto: View {
+    @State private var text: String = ""
+    
+    var body: some View {
+        VStack(alignment: .leading) {
+            
+            Text("Detail Objek Pajak Resto")
+                .bold()
+                .foregroundColor(Color.black)
+                .font(.system(size: 12))
+                .padding(EdgeInsets(top: 16, leading: 16, bottom: 0, trailing: 0))
+            
+            Group {
+    
+                Text("Jumlah Kursi")
+                    .font(.system(size: 14))
+                    .padding(.horizontal, 16)
+                    .padding(.top, 16)
+                    .foregroundColor(Color.black)
+                
+                TextField("10", text: $text)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .disabled(true)
+                    .padding(.horizontal, 16)
+                    .font(.system(size: 12))
+                
+                Text("Jumlah Meja")
+                    .font(.system(size: 14))
+                    .padding(.horizontal, 16)
+                    .foregroundColor(Color.black)
+                
+                TextField("5", text: $text)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding(.horizontal, 16)
+                    .disabled(true)
+                    .font(.system(size: 12))
+                
+                Text("Jumlah Pengunjung")
+                    .font(.system(size: 14))
+                    .padding(.horizontal, 16)
+                    .foregroundColor(Color.black)
+                
+                TextField("5", text: $text)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding(.horizontal, 16)
+                    .disabled(true)
+                    .font(.system(size: 12))
+                
+                Text("Harga Makanan")
+                    .font(.system(size: 14))
+                    .padding(.horizontal, 16)
+                    .foregroundColor(Color.black)
+                
+                TextField("Rp.12.000 - Rp.15.000", text: $text)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding(.horizontal, 16)
+                    .disabled(true)
+                    .font(.system(size: 12))
+                
+                Text("Harga Minuman")
+                    .font(.system(size: 14))
+                    .padding(.horizontal, 16)
+                    .foregroundColor(Color.black)
+                
+                TextField("Rp.10.000 - Rp.20.000", text: $text)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding(.horizontal, 16)
+                    .disabled(true)
+                    .font(.system(size: 12))
+                
+            }
+            
+            
+            Spacer()
+                .padding(.bottom,16)
+
+
+            
+            
+        }
+        .foregroundColor(Color.white)
+        .cornerRadius(10)
+        .background(Color.white)
+        .cornerRadius(10)
+        .shadow(color: Color.black.opacity(0.2), radius: 4, x: 0, y: 2)
+    }
+
+    
+}
+
+
+// TAMPILAN PAJAK AIR TANAH
+struct CardDetailObjekPajakAirTanah: View {
+    @State private var text: String = ""
+    
+    var body: some View {
+        VStack(alignment: .leading) {
+            
+            Text("Detail Objek Pajak Air Tanah")
+                .bold()
+                .foregroundColor(Color.black)
+                .font(.system(size: 12))
+                .padding(EdgeInsets(top: 16, leading: 16, bottom: 0, trailing: 0))
+            
+            Group {
+    
+                Text("Peruntukan")
+                    .font(.system(size: 14))
+                    .padding(.horizontal, 16)
+                    .padding(.top, 16)
+                    .foregroundColor(Color.black)
+                
+                TextField("Niaga", text: $text)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .disabled(true)
+                    .padding(.horizontal, 16)
+                    .font(.system(size: 12))
+                
+                Text("Jenis")
+                    .font(.system(size: 14))
+                    .padding(.horizontal, 16)
+                    .foregroundColor(Color.black)
+                
+                TextField("ABT", text: $text)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding(.horizontal, 16)
+                    .disabled(true)
+                    .font(.system(size: 12))
+                
+                Text("Pengenaan")
+                    .font(.system(size: 14))
+                    .padding(.horizontal, 16)
+                    .foregroundColor(Color.black)
+                
+                TextField("2%", text: $text)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding(.horizontal, 16)
+                    .disabled(true)
+                    .font(.system(size: 12))
+                
+            }
+            
+            
+            Spacer()
+                .padding(.bottom,16)
+
+
+            
+            
+        }
+        .foregroundColor(Color.white)
+        .cornerRadius(10)
+        .background(Color.white)
+        .cornerRadius(10)
+        .shadow(color: Color.black.opacity(0.2), radius: 4, x: 0, y: 2)
+    }
+
+    
+}
+
+// TAMPILAN PAJAK HIBURAN
+
+struct CardDetailPajakHiburan: View {
+    @State private var text: String = ""
+    @State private var selectedOption: Bool?
+    var body: some View {
+        VStack(alignment: .leading){
+            Text("Detail Objek Pajak Hiburan")
+                .bold()
+                .foregroundColor(Color.black)
+                .font(.system(size: 12))
+                .padding(EdgeInsets(top: 16, leading: 26, bottom: 0, trailing: 0))
+            
+            ForEach(0..<1) { index in
+                contentDetailPajakHiburan()
+            }
+            .padding(.vertical,16)
+            
+            Group {
+                
+                Group{
+                    Text("Jumlah Pengunjung rata-rata pada hari biasa")
+                        .font(.system(size: 12))
+                        .padding(.horizontal, 16)
+                        .padding(.top, 16)
+                        .foregroundColor(Color.black)
+                    
+                    TextField("Label", text: $text)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .disabled(true)
+                        .padding(.horizontal, 16)
+                        .font(.system(size: 12))
+                    Text("(khusus untuk pertunjukan Film, Kesenian dan Sejenisnya, Pagelaran Musik dan Tari)")
+                        .font(.system(size: 10))
+                        .padding(.horizontal, 16)
+                        .padding(.top, -8)
+                        .foregroundColor(Color.black)
+                    
+                }
+
+                Group{
+                    Text("Jumlah pengunjung rata-rata pada hari libur/minggu")
+                        .font(.system(size: 12))
+                        .padding(.horizontal, 16)
+                        .padding(.top,8)
+                        .foregroundColor(Color.black)
+                    
+                    TextField("Label", text: $text)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .padding(.horizontal, 16)
+                        .disabled(true)
+                        .font(.system(size: 12))
+                    Text("(khusus untuk pertunjukan Film, Kesenian dan Sejenisnya, Pagelaran Musik dan Tari)")
+                        .font(.system(size: 10))
+                        .padding(.horizontal, 16)
+                        .padding(.top, -8)
+                        .foregroundColor(Color.black)
+                }
+  
+                
+                Group{
+                    Text("Jumlah Meja/Mesin")
+                        .font(.system(size: 12))
+                        .padding(.horizontal, 16)
+                        .padding(.top,8)
+                        .foregroundColor(Color.black)
+                    
+                    TextField("Label", text: $text)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .padding(.horizontal, 16)
+                        .disabled(true)
+                        .font(.system(size: 12))
+                    Text("(Khusus untuk Billyar, Permainan Ketangkasan)")
+                        .font(.system(size: 10))
+                        .padding(.horizontal, 16)
+                        .padding(.top, -8)
+                        .foregroundColor(Color.black)
+                }
+        
+                
+                
+                Group{
+                    Text("Jumlah Kamar/Ruangan")
+                        .font(.system(size: 12))
+                        .padding(.horizontal, 16)
+                        .padding(.top,8)
+                        .foregroundColor(Color.black)
+                    
+                    TextField("Label", text: $text)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .padding(.horizontal, 16)
+                        .disabled(true)
+                        .font(.system(size: 12))
+                    Text("(khusus untuk Panti Pijat, Mandi Uap/Spa, Karaoke)")
+                        .font(.system(size: 10))
+                        .padding(.horizontal, 16)
+                        .padding(.top, -8)
+                        .foregroundColor(Color.black)
+                }
+            
+            }
+            Group{
+                Text("Apakah perusahaan menyediakan karcis bebas (free) kepada orang-orang tertenu")
+                    .font(.system(size: 12))
+                    .padding(.horizontal, 16)
+                    .padding(.top,8)
+                    .foregroundColor(Color.black)
+                HStack(alignment: .center){
+                    RadioButton(text: "Ya", isSelected: selectedOption == true) {
+                        selectedOption = true
+                    }
+                    RadioButton(text: "Tidak", isSelected: selectedOption == true) {
+                        selectedOption = false
+                    }
+                }
+                .padding(.horizontal,16)
+            }
+            
+
+        
+            
+            
+       
+            Spacer()
+                .padding(.bottom,16)
+            
+        }
+            .foregroundColor(Color.white)
+            .cornerRadius(10)
+            .background(Color.white)
+            .cornerRadius(10)
+            .shadow(color: Color.black.opacity(0.2), radius: 4, x: 0, y: 2)
+    }
+}
+
+struct contentDetailPajakHiburan: View {
+    var body: some View {
+        VStack {
+                    
+                    VStack(alignment: .leading, spacing: 16) {
+                        HStack (alignment:.firstTextBaseline){
+                            Text("Semua Kelas")
+                                .font(.system(size: 12))
+                                .padding(.leading,30)
+                                       
+                            Text("Rp.2.000.000")
+                                .font(.system(size: 12))
+                                .padding(.leading,100)
+                            
+                        }
+                        Divider()
+                            .background(Color.gray)
+                            .padding(.horizontal,30)
+                    }
+                    .foregroundColor(.black)
+        }
+    }
+}
+
+struct RadioButton: View {
+    var text: String
+    var isSelected: Bool
+    var action: () -> Void
+    
+    var body: some View {
+        Button(action: action) {
+            HStack(spacing: 8) {
+                Circle()
+                    .fill(isSelected ? Color.blue : Color.gray)
+                    .frame(width: 20, height: 20)
+                
+                Text(text)
+                    .font(.system(size: 12))
+            }
+            .padding(8)
+        }
+        .foregroundColor(.black)
+    }
+}
+
+
+// TAMPILAN PAJAK REKLAME
+
 
