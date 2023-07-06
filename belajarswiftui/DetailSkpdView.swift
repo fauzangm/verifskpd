@@ -937,8 +937,8 @@ struct CardDetailObjekPajakReklame: View {
 }
 
 struct contentDetailPajakReklame: View {
+    @State private var isShowingBottomSheet = false
     var body: some View {
-        
         VStack(alignment: .leading, spacing: 8) {
             Text("Reklame Bilboard")
                 .bold()
@@ -965,6 +965,14 @@ struct contentDetailPajakReklame: View {
             }
             .padding(.horizontal,16)
         }
+        .onTapGesture {
+             isShowingBottomSheet = true
+         }
+         .sheet(isPresented: $isShowingBottomSheet) {
+             BottomSheetView()
+                 .presentationDetents([.height(400)])
+                 .presentationDragIndicator(.visible)
+         }
         .foregroundColor(Color.white)
         .cornerRadius(10)
         .frame(maxWidth: .infinity)
@@ -976,3 +984,142 @@ struct contentDetailPajakReklame: View {
 }
 
 
+struct BottomSheetView: View {
+    @Environment(\.dismiss) private var dismiss
+    
+    var body: some View {
+        VStack(spacing: 8){
+            Text("Reklame Bilboard")
+                .bold()
+                .foregroundColor(Color.black)
+                .font(.system(size: 12))
+                .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 0))
+                .frame(maxWidth: .infinity, alignment: .leading)// Mengatur alignment menjadi leading (kiri)
+            HStack{
+                VStack(spacing: 8){
+                    Group {
+                        Text("Jumlah Reklame")
+                            .font(.system(size: 12))
+                            .foregroundColor(Color.black)
+                            .frame(maxWidth: .infinity, alignment: .leading) // Mengatur alignment menjadi leading (kiri)
+                        
+                        Text("Lokasi")
+                            .font(.system(size: 12))
+                            .foregroundColor(Color.black)
+                            .frame(maxWidth: .infinity, alignment: .leading) // Mengatur alignment menjadi leading (kiri)
+                        
+                        Text("Klasifikasi")
+                            .font(.system(size: 12))
+                            .foregroundColor(Color.black)
+                            .frame(maxWidth: .infinity, alignment: .leading) // Mengatur alignment menjadi leading (kiri)
+                        
+                        Text("No persil")
+                            .font(.system(size: 12))
+                            .foregroundColor(Color.black)
+                            .frame(maxWidth: .infinity, alignment: .leading) // Mengatur alignment menjadi leading (kiri)
+                        Text("Jumlah Sisi")
+                            .font(.system(size: 12))
+                            .foregroundColor(Color.black)
+                            .frame(maxWidth: .infinity, alignment: .leading) // Mengatur alignment menjadi leading (kiri)
+                        
+                        Text("Panjang")
+                            .font(.system(size: 12))
+                            .foregroundColor(Color.black)
+                            .frame(maxWidth: .infinity, alignment: .leading) // Mengatur alignment menjadi leading (kiri)
+                        
+                        Text("Lebar")
+                            .font(.system(size: 12))
+                            .foregroundColor(Color.black)
+                            .frame(maxWidth: .infinity, alignment: .leading) // Mengatur alignment menjadi leading (kiri)
+                        
+                        Text("Diameter")
+                            .font(.system(size: 12))
+                            .foregroundColor(Color.black)
+                            .frame(maxWidth: .infinity, alignment: .leading) // Mengatur alignment menjadi leading (kiri)
+                    }
+                    Group{
+                        
+                        Text("Luas")
+                            .font(.system(size: 12))
+                            .foregroundColor(Color.black)
+                            .frame(maxWidth: .infinity, alignment: .leading) // Mengatur alignment menjadi leading (kiri)
+                        
+                        Text("Tarif Pajak")
+                            .font(.system(size: 12))
+                            .foregroundColor(Color.black)
+                            .frame(maxWidth: .infinity, alignment: .leading) // Mengatur alignment menjadi leading (kiri)
+                        
+                        Text("Jumlah Pajak")
+                            .font(.system(size: 12))
+                            .foregroundColor(Color.black)
+                            .frame(maxWidth: .infinity, alignment: .leading) // Mengatur alignment menjadi leading (kiri)
+                    }
+                }
+                VStack(spacing: 8){
+                    Group {
+                        Text("5")
+                            .font(.system(size: 12))
+                            .foregroundColor(Color.black)
+                            .frame(maxWidth: .infinity, alignment: .leading) // Mengatur alignment menjadi leading (kiri)
+                        
+                        Text("Jln Ijen")
+                            .font(.system(size: 12))
+                            .foregroundColor(Color.black)
+                            .frame(maxWidth: .infinity, alignment: .leading) // Mengatur alignment menjadi leading (kiri)
+                        
+                        Text("A")
+                            .font(.system(size: 12))
+                            .foregroundColor(Color.black)
+                            .frame(maxWidth: .infinity, alignment: .leading) // Mengatur alignment menjadi leading (kiri)
+                        
+                        Text("-")
+                            .font(.system(size: 12))
+                            .foregroundColor(Color.black)
+                            .frame(maxWidth: .infinity, alignment: .leading) // Mengatur alignment menjadi leading (kiri)
+                        
+                        Text("5")
+                            .font(.system(size: 12))
+                            .foregroundColor(Color.black)
+                            .frame(maxWidth: .infinity, alignment: .leading) // Mengatur alignment menjadi leading (kiri)
+                        
+                        Text("1")
+                            .font(.system(size: 12))
+                            .foregroundColor(Color.black)
+                            .frame(maxWidth: .infinity, alignment: .leading) // Mengatur alignment menjadi leading (kiri)
+                        
+                        Text("3")
+                            .font(.system(size: 12))
+                            .foregroundColor(Color.black)
+                            .frame(maxWidth: .infinity, alignment: .leading) // Mengatur alignment menjadi leading (kiri)
+                        
+                        Text("-")
+                            .font(.system(size: 12))
+                            .foregroundColor(Color.black)
+                            .frame(maxWidth: .infinity, alignment: .leading) // Mengatur alignment menjadi leading (kiri)
+                    }
+                    Group{
+                        Text("2 m2")
+                            .font(.system(size: 12))
+                            .foregroundColor(Color.black)
+                            .frame(maxWidth: .infinity, alignment: .leading) // Mengatur alignment menjadi leading (kiri)
+                        
+                        Text("Rp.2.000.000")
+                            .font(.system(size: 12))
+                            .foregroundColor(Color.black)
+                            .frame(maxWidth: .infinity, alignment: .leading) // Mengatur alignment menjadi leading (kiri)
+                        
+                        Text("Rp.2.000.000")
+                            .font(.system(size: 12))
+                            .foregroundColor(Color.black)
+                            .frame(maxWidth: .infinity, alignment: .leading) // Mengatur alignment menjadi leading (kiri)
+                        
+                    }
+                }
+            }
+      
+            .padding(.horizontal,16)
+
+        }
+ 
+    }
+}
